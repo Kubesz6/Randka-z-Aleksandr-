@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Czy pójdziesz ze mną na randkę? ❤️</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@er@4/dist/email.min.jsscript>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#ffd1ff);
+overflow:hidden;
+}
+
+.container{
+background:white;
+width:90%;
+max-width:700px;
+padding:35px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,.15);
+position:relative;
+z-index:2;
+}
+
+h1{
+color:#e91e63;
+margin-bottom:15px;
+}
+
+.subtitle{
+margin-bottom:20px;
+color:#666;
+}
+
+.buttons{
+position:relative;
+height:120px;
+margin-top:25px;
+}
+
+button{
+border:none;
+padding:15px 30px;
+border-radius:15px;
+font-size:18px;
+cursor:pointer;
+transition:.3s;
+}
+
+#yesBtn{
+background:#4CAF50;
+color:white;
+}
+
+#yesBtn:hover{
+transform:scale(1.05);
+}
+
+#noBtn{
+background:#f44336;
+color:white;
+position:absolute;
+left:55%;
+}
+
+.hidden{
+display:none;
+}
+
+form{
+margin-top:25px;
+text-align:left;
+}
+
+label{
+display:block;
+margin-top:12px;
+font-weight:bold;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin-top:5px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+.submitBtn{
+width:100%;
+margin-top:20px;
+background:#e91e63;
+color:white;
+}
+
+#success{
+padding:25px;
+background:#ffe5ef;
+border-radius:20px;
+margin-top:20px;
+}
+
+.heart{
+position:absolute;
+color:#ff4d6d;
+animation:float 10s linear infinite;
+opacity:.5;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+}
+100%{
+transform:translateY(-120px);
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>❤️ Kochanie ❤️</h1>
+
+<p class="subtitle">
+Od kiedy jesteś w moim życiu, każdy dzień jest lepszy.
+Mam jedno ważne pytanie...
+</p>
+
+<h2>Czy pójdziesz ze mną na randkę? 🥺</h2>
+
+<div class="buttons">
+<button id="yesBtn">Tak! 🥰</button>
+<button id="noBtn">Nie 🙈</button>
+</div>
+
+<div id="planner" class="hidden">
+
+<form id="dateForm">
+
+<label>📅 Data</label>
+<input type="date" id="date" required>
+
+<label>⏰ Godzina</label>
+<input type="time" id="time" required>
+
+<label>✨ Co chciałabyś robić?</label>
+<select id="activity">
+<option>🍕 Jedzenie</option>
+<option>🏊 Basen</option>
+<option>🚶 Spacer</option>
+<option>🎥 Kino</option>
+<option>💖 Coś innego</option>
+</select>
+
+<label>🌹 Szczegóły</label>
+<input
+id="details"
+type="text"
+placeholder="np. sushi, pizza, lody, romantyczny spacer..."
+>
+
+<button class="submitBtn" type="submit">
+Potwierdź randkę ❤️
+</button>
+
+</form>
+
+<div id="success" class="hidden"></div>
+
+</div>
+
+</div>
+
+<script>
+
+emailjs.init({
+publicKey: "uZeNmW9NNflH_HhB_"
+});
+
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+
+const x = Math.random()*400;
+const y = Math.random()*80;
+
+noBtn.style.left = x+"px";
+noBtn.style.top = y+"px";
+
+});
+
+document.getElementById("yesBtn").addEventListener("click",()=>{
+
+document.getElementById("planner").classList.remove("hidden");
+
+});
+
+document.getElementById("dateForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const date=document.getElementById("date").value;
+const time=document.getElementById("time").value;
+const activity=document.getElementById("activity").value;
+const details=document.getElementById("details").value;
+
+emailjs.send(
+"service_randewu",
+"template_s77ncdr",
+{
+date:date,
+time:time,
+activity:activity,
+details:details,
+message:
+`Randka zaakceptowana! Data: ${date}, godzina: ${time}, aktywność: ${activity}, szczegóły: ${details}`
+}
+)
+.then(()=>{
+
+const success=document.getElementById("success");
+
+success.classList.remove("hidden");
+
+success.innerHTML=`
+<h2>🥰 Hurraa!</h2>
+<p>Dziękuję kochanie ❤️</p>
+<p>Nie mogę się już doczekać naszej randki!</p>
+<p><strong>📅 ${date}</strong></p>
+<p><strong>⏰ ${time}</strong></p>
+<p><strong>${activity}</strong></p>
+<p>${details}</p>
+`;
+
+})
+.catch((err)=>{
+console.log(err);
+alert("Nie udało się wysłać odpowiedzi.");
+});
+
+});
+
+for(let i=0;i<30;i++){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+heart.style.animationDuration=(Math.random()*6+6)+"s";
+
+document.body.appendChild(heart);
+
+}
+</script>
+
+</body>
+</html>
