@@ -1,9 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
-<title>Test</title>
-</head>
-<body>
-<h1>Działa! ❤️</h1>
-</body>
-</html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kuba ❤️ Aleksandra</title>
+
+https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.jsscript>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#4c1d95);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow-x:hidden;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:800px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:30px;
+    padding:40px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#f8c8dc;
+    font-size:1.1rem;
+    margin-bottom:20px;
+    line-height:1.7;
+}
+
+.counter{
+    background:rgba(255,255,255,0.08);
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:25px;
+}
+
+.question{
+    font-size:2rem;
+    margin-bottom:30px;
+}
+
+.buttons{
+    position:relative;
+    height:140px;
+}
+
+button{
+    border:none;
+    border-radius:15px;
+    padding:15px 30px;
+    font-size:20px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#yesBtn{
+    background:#22c55e;
+    color:white;
+}
+
+#yesBtn:hover{
+    transform:scale(1.05);
+}
+
+#noBtn{
+    position:absolute;
+    background:#ef4444;
+    color:white;
+    left:60%;
+}
+
+.hidden{
+    display:none;
+}
+
+form{
+    text-align:left;
+    margin-top:25px;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+input,select{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+}
+
+.submitBtn{
+    margin-top:20px;
+    width:100%;
+    background:#ec4899;
+    color:white;
+}
+
+.success{
+    margin-top:25px;
+    background:rgba(255,255,255,0.1);
+    padding:25px;
+    border-radius:20px;
+}
+
+.heart{
+    position:fixed;
+    font-size:20px;
+    pointer-events:none;
+    animation:float 10s linear infinite;
+    opacity:.5;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(110vh);
+    }
+    to{
+        transform:translateY(-120px);
+    }
+}
+
+.confetti
